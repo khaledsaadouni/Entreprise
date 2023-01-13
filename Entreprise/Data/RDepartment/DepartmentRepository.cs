@@ -14,5 +14,9 @@ namespace Entreprise.Data.RDepartment
         {
             return this.context.Department.Include(e=>e.HOD).ToList();
         }
+        public Department getByID(int id)
+        {
+            return this.context.Department.Find(id);
+        }
     }
 }

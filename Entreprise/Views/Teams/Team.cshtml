@@ -11,6 +11,13 @@
 
                 <div class="section-title">
                     <h2 style="font-size: xx-large;color:black">@ViewData["Dep"] Team</h2>
+                 
+                        @if (ViewData["role"].Equals("CEO") || ViewData["role"].Equals("HOD"))
+                         {
+                             <a>
+                            @Html.ActionLink("Add Member", "AddMember", "Teams",null,new {@class="btn btn-warning"})
+                            </a> 
+                        }
                 </div>
 
                 <div class="row">

@@ -1,9 +1,8 @@
-﻿using Entreprise.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 using System.Diagnostics;
 
-namespace Entreprise.Data
+namespace Entreprise.Models
 {
     public class ProjectContext : DbContext
 
@@ -24,14 +23,14 @@ namespace Entreprise.Data
         {
         }
 
-       private static ProjectContext? Context;
+        private static ProjectContext? Context;
         public static ProjectContext Instance()
         {
 
             if (Context == null)
             {
                 var optionsBuilder = new DbContextOptionsBuilder<ProjectContext>();
-                optionsBuilder.UseSqlite("Data Source=C:\\Users\\khaled\\Desktop\\GL3\\Framework\\Project\\Project.db");
+                optionsBuilder.UseSqlite("Data Source=C:\\Users\\khaled\\Desktop\\Project\\Project.db");
                 Debug.WriteLine("Une nouvelle instance créee!");
                 Context = new ProjectContext(optionsBuilder.Options);
             }

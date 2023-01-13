@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using Entreprise.Models;
 
 namespace Entreprise.Data
 {
@@ -81,6 +82,7 @@ namespace Entreprise.Data
                 throw ex;
             }
         }
+
     }
     
 }

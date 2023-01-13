@@ -46,9 +46,10 @@
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
-
-                <a href="#about" class="get-started-btn scrollto">Log Out</a>
-                }
+}
+            @if (ViewData["logged"]=="true"){
+                <div class="get-started-btn scrollto">@Html.ActionLink("Log Out", "Logout", "Login")</div>
+            }
         </div>
     </header>
   

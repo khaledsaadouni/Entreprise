@@ -1,5 +1,4 @@
-﻿using Entreprise.Data;
-using Entreprise.Data.RCategory;
+﻿using Entreprise.Data.RCategory;
 using Entreprise.Data.RDepartment;
 using Entreprise.Data.RHOD;
 using Entreprise.Data.RProduct;

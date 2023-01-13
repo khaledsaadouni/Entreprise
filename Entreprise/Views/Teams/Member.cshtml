@@ -31,15 +31,18 @@
                             <li><strong>Job </strong>: @Model.Function  </li>
                            
                         </ul>
-
-                     @*    <div class="row">
-                            <div class="col">
-                            <input type="submit" class="btn btn-warning" value="Edit Product">
+                        @if (ViewData["role"].Equals("CEO"))
+                        {
+                            <div class="row">
+                                <div class="col">
+                                    @Html.ActionLink("Edit", "Edit", "Teams",new {id = Model.Id },new {@class="btn btn-warning"})
+                                  
                             </div>
                             <div class="col">
-                                <input type="submit" class="btn btn-outline-danger" value="Delete Product">
-                        </div>  *@
-                    </div>
+                                    @Html.ActionLink("Delete", "Delete", "Teams",new {id = Model.Id},new {@class="btn btn-outline-danger"})
+                                   
+                        </div>  
+                    </div>}
                     </div>
 
 

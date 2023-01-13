@@ -1,4 +1,5 @@
-﻿using Entreprise.Models;
+﻿using Entreprise.Data;
+using Entreprise.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -15,18 +16,16 @@ namespace Entreprise.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
+            if (HttpContext.Session.GetString("Status") == "logged")
+            {
+                
+                ViewData["logged"] = "true";
+                return View();
 
-        public IActionResult Privacy()
-        {
-            return View();
+            }
+            return Redirect("/login");
+            
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+         
     }
 }

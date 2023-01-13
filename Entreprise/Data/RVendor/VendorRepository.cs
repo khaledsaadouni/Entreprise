@@ -11,5 +11,12 @@ namespace Entreprise.Data.RVendor
         {
             this.context = ProjectContext.Instance(); ;
         }
+        public void UpdateVendor(Vendor vendor)
+        {
+            this.context.Vendor.Find(vendor.Id).Id = vendor.Id;
+            this.context.Vendor.Find(vendor.Id).Name = vendor.Name;
+            this.context.Vendor.Find(vendor.Id).Phone_Number = vendor.Phone_Number;
+            this.context.SaveChanges();
+        }
     }
 }

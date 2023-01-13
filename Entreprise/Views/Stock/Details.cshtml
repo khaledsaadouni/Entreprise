@@ -15,7 +15,7 @@
                 <div class="col-lg-4" data-aos="fade-left" data-aos-delay="100">
 
             
-                    <img src="~/img/portfolio/portfolio-@(Model.Id).jpg" class="img-fluid" alt="" height="500" width="400" style="object-fit: cover;box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;">
+                    <img src="~/img/products/@(Model.Id).jpg" class="img-fluid" alt="" height="500" width="400" style="object-fit: cover;box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;">
 
                 </div>
 
@@ -34,17 +34,12 @@
                             <li><strong> Sold</strong>: @Model.Sold </li>
                             <li><strong> Left</strong>: @Model.Left  </li>
                            
-                            <li><strong> Vendor</strong>:@if(@Model.Vendor!=null)
-
-                                    @Html.ActionLink( Model.Vendor.Name, "VendorProducts", "Stock",new {id =Model.Vendor.Id})
-
-                                </li>
-
-                            <li><strong> Stock</strong>:@if (@Model.Stock != null)
-
-                                    @Html.ActionLink( Model.Stock.Name, "AllProduct", "Stock",new {id =Model.Stock.Id})
+                            <li><strong> Vendor</strong>:
+                                    
+                                            @Model.Vendor.Name 
 
                                 </li>
+
                                 
                             <li><strong> Category</strong>:@if (@Model.Category != null)
                                     @Html.ActionLink(Model.Category.Name, "CategoryProducts", "Stock",new {id =Model.Category.Id})

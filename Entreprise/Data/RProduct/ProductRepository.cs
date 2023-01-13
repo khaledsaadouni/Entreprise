@@ -1,5 +1,6 @@
 ﻿
 using Entreprise.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 namespace Entreprise.Data.RProduct
@@ -11,6 +12,8 @@ namespace Entreprise.Data.RProduct
         {
             this.context = ProjectContext.Instance(); ;
         }
+        
+
         public IEnumerable<Product> GetbyStock(Stock s)
         {
            

@@ -28,11 +28,12 @@ namespace Entreprise.Controllers
         {
             if (HttpContext.Session.GetString("Status") == "logged")
             {
-                ViewData["role"] = this.UnitOfWork.User.getByID(Convert.ToInt32(HttpContext.Session.GetString("pid"))).ROLE;
 
+                ViewData["role"] = this.UnitOfWork.User.getByID(Convert.ToInt32(HttpContext.Session.GetString("pid"))).ROLE;
+                ViewBag.Category = this.UnitOfWork.Category.GetAll();
                 ViewData["logged"] = "true";
                 return View(this.UnitOfWork.Product.GetbyStock(this.UnitOfWork.Stock.GetById(id)));
-              //  return View(this.UnitOfWork.Stock.GetById(id).Products);
+      
             }
             return Redirect("/login");
         }
@@ -250,8 +251,10 @@ namespace Entreprise.Controllers
         {
             if (HttpContext.Session.GetString("Status") == "logged")
             {
+                ViewBag.Category = this.UnitOfWork.Category.GetAll();
                 ViewData["role"] = this.UnitOfWork.User.getByID(Convert.ToInt32(HttpContext.Session.GetString("pid"))).ROLE;
                 ViewData["logged"] = "true";
+                ViewData["currentcategory"] = this.UnitOfWork.Category.GetById(id).Name;
                 return View(this.UnitOfWork.Product.GetbyCategory(this.UnitOfWork.Category.GetById(id)));
                 //return View(this.UnitOfWork.Category.GetById(id).Products);
 

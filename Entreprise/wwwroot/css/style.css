@@ -763,29 +763,22 @@ section {
 .portfolio #portfolio-flters {
   padding: 0;
   margin: 0 auto 20px auto;
-  list-style: none;
+  list-style: none; 
   text-align: center;
 }
 
 .portfolio #portfolio-flters li {
-  cursor: pointer;
+ 
   display: inline-block;
   padding: 8px 15px 10px 15px;
   font-size: 14px;
   font-weight: 600;
-  line-height: 1;
-  text-transform: uppercase;
+  line-height: 1; 
   color: #444444;
-  margin-bottom: 5px;
-  transition: all 0.3s ease-in-out;
+  margin-bottom: 5px; 
   border-radius: 3px;
 }
-
-.portfolio #portfolio-flters li:hover,
-.portfolio #portfolio-flters li.filter-active {
-  color: #151515;
-  background: #ffc451;
-}
+ 
 
 .portfolio #portfolio-flters li:last-child {
   margin-right: 0;

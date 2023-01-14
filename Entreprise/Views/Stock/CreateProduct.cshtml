@@ -55,16 +55,7 @@
                               </select>
                             </div>
 
-                            <div class="form-group mt-3">
-                                <p> Stock: </p>
-                                <select asp-for="stock" id="stock" name="stock" class="form-control form-control-lg" >
-
-                                    @foreach (Stock v in ViewBag.Stock)
-                                    {
-                                        <option value="@v.Id">@v.Name</option>
-                                    }
-                                </select>
-                            </div>
+                        
                             <div class="form-group mt-3">
                                 <p> Category: </p>
                                 <select asp-for="category" id="category" name="category" class="form-control form-control-lg" >

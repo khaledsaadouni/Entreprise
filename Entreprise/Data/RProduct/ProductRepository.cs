@@ -12,7 +12,7 @@ namespace Entreprise.Data.RProduct
         {
             this.context = ProjectContext.Instance(); ;
         }
-        
+         
 
         public IEnumerable<Product> GetbyStock(Stock s)
         {

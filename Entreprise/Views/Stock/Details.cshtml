@@ -33,14 +33,6 @@
                             <li><strong> Bought Price  </strong>:   @Model.Bought_Price </li>
                             <li><strong> Sold</strong>: @Model.Sold </li>
                             <li><strong> Left</strong>: @Model.Left  </li>
-                           
-                            <li><strong> Vendor</strong>:
-                                    
-                                            @Model.Vendor.Name 
-
-                                </li>
-
-                                
                             <li><strong> Category</strong>:@if (@Model.Category != null)
                                     @Html.ActionLink(Model.Category.Name, "CategoryProducts", "Stock",new {id =Model.Category.Id})
                                  </li>

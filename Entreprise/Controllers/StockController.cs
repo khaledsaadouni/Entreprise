@@ -1,6 +1,8 @@
 ﻿using Entreprise.Data;
 using Entreprise.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace Entreprise.Controllers
 {
@@ -86,11 +88,8 @@ namespace Entreprise.Controllers
                 ViewBag.Stock = this.UnitOfWork.Stock.GetAll();
                 ViewBag.Category = this.UnitOfWork.Category.GetAll();
                 ViewData["logged"] = "true";
-                MyViewModelProduct p= new MyViewModelProduct();
-                p.product = this.UnitOfWork.Product.GetById(id);
-                p.vendor = this.UnitOfWork.Product.GetById(id).Vendor.Id;
-                p.category=this.UnitOfWork.Product.GetById(id).Category.Id;
-                p.stock = this.UnitOfWork.Product.GetById(id).Stock.Id;
+                Product p= new Product();
+                p = this.UnitOfWork.Product.GetById(id); 
                 return View(p);
 
             }
@@ -98,25 +97,25 @@ namespace Entreprise.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditProduct(MyViewModelProduct p)
+        public IActionResult EditProduct(Product p)
         {
             if (HttpContext.Session.GetString("Status") == "logged" && HttpContext.Session.GetString("role") == "CEO")
             {
-                p.product.Vendor.Products.Remove(p.product);
-                this.UnitOfWork.Vendor.GetById(p.vendor).Products.Add(p.product);
-                p.product.Vendor = this.UnitOfWork.Vendor.GetById(p.vendor);
-                
-                p.product.Category.Products.Remove(p.product);
-                this.UnitOfWork.Category.GetById(p.category).Products.Add(p.product);
-                p.product.Category = this.UnitOfWork.Category.GetById(p.category);
-                
-                p.product.Stock.Products.Remove(p.product);
-                this.UnitOfWork.Stock.GetById(p.stock).Products.Add(p.product);
-                p.product.Stock = this.UnitOfWork.Stock.GetById(p.stock);
-                
-                this.UnitOfWork.Product.UpdateProduct(p.product);
-                this.UnitOfWork.complete();
-                return RedirectToAction("AllProduct", new { id = p.stock });
+                Product pn=  new Product();
+                pn =  this.UnitOfWork.Product.GetById(p.Id);
+                pn.Id = p.Id;
+
+                pn.Name = p.Name;
+
+                pn.Description = p.Description;
+
+                pn.Reference = p.Reference;
+                pn.Bought_Price = p.Bought_Price;
+                pn.Sold_Price = p.Sold_Price;
+                pn.Sold = p.Sold;
+                pn.Left = p.Left; 
+                this.UnitOfWork.complete(); 
+                return RedirectToAction("AllProduct", new { id =1 });
 
             }
             return Redirect("/login");
@@ -128,7 +127,7 @@ namespace Entreprise.Controllers
             {
                 ViewData["role"] = this.UnitOfWork.User.getByID(Convert.ToInt32(HttpContext.Session.GetString("pid"))).ROLE;
 
-                ViewData["logged"] = "true";
+                ViewData["logged"] = "true"; 
                 return View(this.UnitOfWork.Product.GetById(id));
 
             }
